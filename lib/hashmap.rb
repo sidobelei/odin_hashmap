@@ -16,4 +16,14 @@ class HashMap
         
     hash_code
   end
+
+  def set(key, value)
+    @length += 1
+    bucket = hash(key) % @capacity
+    if @hashmap[bucket].nil?
+      @hashmap[bucket] = {key => value}
+    else
+      @hashmap[bucket][key] = value
+    end
+  end
 end
