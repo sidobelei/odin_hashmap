@@ -46,3 +46,37 @@ puts test.length
 p test.keys
 
 p test.values
+
+
+# # create hash set object
+# test = HashSet.new
+
+# # populate hash set
+# test.set('apple')
+# test.set('banana')
+# test.set('carrot')
+# test.set('dog')
+# test.set('elephant')
+# test.set('frog')
+# test.set('grape')
+# test.set('hat')
+# test.set('ice cream')
+# test.set('jacket')
+# test.set('kite')
+# test.set('lion')
+
+# # populate with one more node to exceed load factor
+# test.set('moon')
+
+# # test other methods in hash map
+# p test.has?('apple')
+# p test.has?('no apple')
+
+# p test.remove('apple')
+
+# p test.length
+
+# p test.keys
+
+# test.clear
+# p test.keys
