@@ -49,4 +49,18 @@ class HashSet
   def clear
     @hashset = Array.new(@capacity)
   end
+
+  def entries
+    entries = []
+    @hashset.each do |bucket|
+      if bucket.nil?
+        next
+      else
+        bucket.each do |key|
+          entries.push([key])
+        end
+      end
+    end
+    return entries
+  end
 end
