@@ -84,4 +84,18 @@ class HashMap
     end
     return values.flatten
   end
+
+  def entries
+    entries = []
+    @hashmap.each do |bucket|
+      if bucket.nil?
+        next
+      else
+        bucket.each do |key, value|
+          entries.push([key, value])
+        end
+      end
+    end
+    return entries
+  end
 end
