@@ -5,7 +5,7 @@ class HashSet
     @capacity = 16
     @load_factor = 0.75
     @length = 0
-    @hashmap = Array.new(@capacity)
+    @hashset = Array.new(@capacity)
   end
 
   def hash(key)
@@ -29,20 +29,24 @@ class HashSet
       old_entries.each {|node| set(node[0])}
     end 
     bucket = hash(key) % @capacity
-    if @hashmap[bucket].nil?
-      @hashmap[bucket] = [key]
+    if @hashset[bucket].nil?
+      @hashset[bucket] = [key]
     else
-      @hashmap[bucket].push(key)
+      @hashset[bucket].push(key)
     end
     @length += 1
   end
 
   def has?(key)
     bucket = hash(key) % @capacity
-    if @hashmap[bucket].nil?
+    if @hashset[bucket].nil?
       return false
     else
-      return @hashmap[bucket].include?(key)
+      return @hashset[bucket].include?(key)
     end
+  end
+
+  def clear
+    @hashset = Array.new(@capacity)
   end
 end
