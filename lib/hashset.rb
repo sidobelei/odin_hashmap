@@ -22,11 +22,11 @@ class HashSet
       return
     end
     if length + 1 > (@capacity * @load_factor).round
-      old_entries = entries
+      old_keys = keys
       @length = 0
       @capacity = @capacity * 2
       clear
-      old_entries.each {|node| set(node[0])}
+      old_keys.each {|key| set(key)}
     end 
     bucket = hash(key) % @capacity
     if @hashset[bucket].nil?
@@ -60,17 +60,17 @@ class HashSet
     @hashset = Array.new(@capacity)
   end
 
-  def entries
-    entries = []
+  def keys
+    keys = []
     @hashset.each do |bucket|
       if bucket.nil?
         next
       else
         bucket.each do |key|
-          entries.push([key])
+          keys.push(key)
         end
       end
     end
-    return entries
+    return keys
   end
 end
