@@ -56,4 +56,8 @@ class HashMap
       return nil
     end
   end
+
+  def clear
+    @hashmap = Array.new(@capacity)
+  end
 end
