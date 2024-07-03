@@ -46,6 +46,16 @@ class HashSet
     end
   end
 
+  def remove(key)
+    if has?(key)
+      bucket = hash(key) % @capacity
+      @length -= 1
+      return @hashset[bucket].delete(key)
+    else
+      return nil
+    end
+  end
+
   def clear
     @hashset = Array.new(@capacity)
   end
