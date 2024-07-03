@@ -18,12 +18,32 @@ class HashMap
   end
 
   def set(key, value)
-    @length += 1
+    unless has?(key)
+      @length += 1
+    end
     bucket = hash(key) % @capacity
     if @hashmap[bucket].nil?
       @hashmap[bucket] = {key => value}
     else
       @hashmap[bucket][key] = value
+    end
+  end
+
+  def get(key)
+    bucket = hash(key) % @capacity
+    if @hashmap[bucket].nil?
+      return nil
+    else
+      return @hashmap[bucket][key]
+    end
+  end
+
+  def has?(key)
+    bucket = hash(key) % @capacity
+    if @hashmap[bucket].nil?
+      return false
+    else
+      return @hashmap[bucket].key?(key)
     end
   end
 end
