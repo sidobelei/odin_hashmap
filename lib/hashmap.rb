@@ -60,4 +60,28 @@ class HashMap
   def clear
     @hashmap = Array.new(@capacity)
   end
+
+  def keys
+    keys = []
+    @hashmap.each do |bucket|
+      if bucket.nil?
+        next
+      else
+        keys.push(bucket.keys)
+      end
+    end
+    return keys.flatten
+  end
+
+  def values
+    values = []
+    @hashmap.each do |bucket|
+      if bucket.nil?
+        next
+      else
+        values.push(bucket.values)
+      end
+    end
+    return values.flatten
+  end
 end
