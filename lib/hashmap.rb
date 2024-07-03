@@ -46,4 +46,14 @@ class HashMap
       return @hashmap[bucket].key?(key)
     end
   end
+
+  def remove(key)
+    if has?(key)
+      bucket = hash(key) % @capacity
+      @length -= 1
+      return @hashmap[bucket].delete(key)
+    else
+      return nil
+    end
+  end
 end
