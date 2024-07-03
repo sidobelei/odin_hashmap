@@ -36,4 +36,13 @@ class HashSet
     end
     @length += 1
   end
+
+  def has?(key)
+    bucket = hash(key) % @capacity
+    if @hashmap[bucket].nil?
+      return false
+    else
+      return @hashmap[bucket].include?(key)
+    end
+  end
 end
