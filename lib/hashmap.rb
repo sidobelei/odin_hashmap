@@ -21,6 +21,13 @@ class HashMap
     unless has?(key)
       @length += 1
     end
+    if length > (@capacity * @load_factor).round
+      old_entries = entries
+      @length = 1
+      @capacity = @capacity * 2
+      clear
+      old_entries.each {|node| set(node[0], node[1])}
+    end 
     bucket = hash(key) % @capacity
     if @hashmap[bucket].nil?
       @hashmap[bucket] = {key => value}
